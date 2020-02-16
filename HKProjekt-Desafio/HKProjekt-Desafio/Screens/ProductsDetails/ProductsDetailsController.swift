@@ -10,6 +10,7 @@ import UIKit
 
 class ProductsDetailsController: UIViewController {
     var viewModel : ProductsListViewModel?
+    var indexImageProduct = 0
     
     @IBOutlet weak var imgProduct: UIImageView!
     @IBOutlet weak var lbTitleProduct: UILabel!
@@ -24,9 +25,35 @@ class ProductsDetailsController: UIViewController {
         super.viewDidLoad()
 
         viewModel?.getDetailProduct(succes: {
-            print("teste")
+            DispatchQueue.main.async {
+                self.setValuesInScreen()
+            }
         })
-        // Do any additional setup after loading the view.
+    }
+    
+    func setValuesInScreen() {
+        guard let product = viewModel?.productDetail else { return }
+        self.imgProduct.downloaded(from: product.modelo.padrao.imagens.first?.url ?? "")
+        self.lbTitleProduct.text = product.nome
     }
 
+    @IBAction func btNextImage(_ sender: Any) {
+        guard let product = viewModel?.productDetail else { return }
+        if product.modelo.padrao.imagens.count == indexImageProduct + 1{
+            self.indexImageProduct = 0
+        } else {
+            self.indexImageProduct += 1
+        }
+        self.imgProduct.downloaded(from: product.modelo.padrao.imagens[indexImageProduct].url )
+    }
+    
+    @IBAction func btPreviousImage(_ sender: Any) {
+        guard let product = viewModel?.productDetail else { return }
+        if indexImageProduct == 0 {
+            self.indexImageProduct = 4
+        } else {
+            self.indexImageProduct -= 1
+        }
+        self.imgProduct.downloaded(from: product.modelo.padrao.imagens[indexImageProduct].url )
+    }
 }

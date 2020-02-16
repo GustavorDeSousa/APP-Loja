@@ -24,6 +24,7 @@ class ProductsListViewModel {
     func getDetailProduct(succes: @escaping() -> Void) {
         REST.loadDetailProducts { (response) in
             self.productDetail = response
+            succes()
         }
     }
 }

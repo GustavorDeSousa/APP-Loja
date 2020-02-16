@@ -43,6 +43,9 @@
                                                     <state key="normal" image="chevron.left" catalog="system">
                                                         <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="btPreviousImage:" destination="-1" eventType="touchUpInside" id="dhK-Ww-aSQ"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6g-kp-o65">
                                                     <rect key="frame" x="344" y="0.0" width="50" height="300"/>
@@ -53,6 +56,9 @@
                                                     <state key="normal" image="chevron.right" catalog="system">
                                                         <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="btNextImage:" destination="-1" eventType="touchUpInside" id="PVa-Hz-3Ob"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
