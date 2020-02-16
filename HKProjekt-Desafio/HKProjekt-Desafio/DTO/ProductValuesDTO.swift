@@ -34,7 +34,7 @@ class ProductTypePay: Codable {
 }
 
 
-// MARK - Detalhes do produto
+// MARK: Detalhes do produto
 class ProductDetailDTO: Codable {
     var id : Int
     var nome : String
@@ -131,4 +131,16 @@ class LojistaDTO: Codable {
     var retiraRapido : Bool
     var compraOnline: Bool
     var eleito: Bool
+}
+
+class QuemViuDTO: Codable {
+    var id : Int
+    var sku : Int
+    var nome : String
+    var imagemUrl: String
+    var precoAtual : Double
+    var precoAnterior : Double
+    var percentualCompra : Double
+    var classificacao : Double
+    var parcelamento : String
 }

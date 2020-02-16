@@ -13,6 +13,7 @@ class ProductsListViewModel {
     var productSelected : ProductValuesDTO?
     
     var productDetail : ProductDetailDTO?
+    var quemViuDTO : [QuemViuDTO]?
     
     func getListProducts(succes: @escaping() -> Void) {
         REST.loadListProducts { (response) in
@@ -27,4 +28,13 @@ class ProductsListViewModel {
             succes()
         }
     }
+    
+    func getLoadQuemViu(succes: @escaping() -> Void) {
+        REST.loadQuemViu { (response) in
+            self.quemViuDTO = response
+            succes()
+        }
+    }
+    
+    
 }
