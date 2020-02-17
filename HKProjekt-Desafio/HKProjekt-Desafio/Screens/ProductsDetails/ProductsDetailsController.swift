@@ -104,11 +104,24 @@ class ProductsDetailsController: UIViewController, UICollectionViewDelegate, UIC
 
         cell.imgProduct.downloaded(from: viewModel?.quemViuDTO?[indexPath.row].imagemUrl ?? "")
         cell.lbTitleProduct.text = viewModel?.quemViuDTO?[indexPath.row].nome
+        cell.lbValueFull.text = "R$ " + String(viewModel?.quemViuDTO?[indexPath.row].precoAnterior ?? 0.0)
+        cell.lbValue.text = "R$ " + String(viewModel?.quemViuDTO?[indexPath.row].precoAtual ?? 0.0)
+        cell.lbPortionValue.text = viewModel?.quemViuDTO?[indexPath.row].parcelamento ?? ""
+        self.generateRatingStar(cell: cell, ratingValue: Int(viewModel?.quemViuDTO?[indexPath.row].classificacao ?? 0))
         return cell
     }
 }
 
 extension ProductsDetailsController {
+    
+    func generateRatingStar(cell: ProductsCollectionCell, ratingValue: Int) {
+        if ratingValue >= 1 { cell.rating1.image = UIImage(systemName: "star.fill")}
+        if ratingValue >= 2 { cell.rating2.image = UIImage(systemName: "star.fill")}
+        if ratingValue >= 3 { cell.rating3.image = UIImage(systemName: "star.fill")}
+        if ratingValue >= 4 { cell.rating4.image = UIImage(systemName: "star.fill")}
+        if ratingValue == 5 { cell.rating5.image = UIImage(systemName: "star.fill")}
+    }
+    
     func setValuesInScreen() {
         guard let product = viewModel?.productDetail else { return }
         self.imgProduct.downloaded(from: product.modelo.padrao.imagens.first?.url ?? "")
